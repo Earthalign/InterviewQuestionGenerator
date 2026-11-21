@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: interview-question-generator
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: DATABASE_PATH
+        value: /data/learning.db
+      - key: GROQ_API_KEY
+        sync: false          # wpisz ręcznie w dashboardzie Render
+      - key: GROQ_MODEL
+        value: openai/gpt-oss-20b
+      - key: GROQ_BASE_URL
+        value: https://api.groq.com/openai/v1
+    disk:
+      name: sqlite-data
+      mountPath: /data
+      sizeGB: 1
+    healthCheckPath: /api/today
+    autoDeploy: true
