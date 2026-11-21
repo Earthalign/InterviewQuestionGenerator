@@ -15,7 +15,7 @@ class Settings:
 
     database_path: Path = field(default_factory=_default_database_path)
     groq_api_key: str | None = None
-    groq_model: str = "openai/gpt-oss-20b"
+    groq_model: str = "llama-3.3-70b-versatile"
     groq_base_url: str = "https://api.groq.com/openai/v1"
 
     @classmethod

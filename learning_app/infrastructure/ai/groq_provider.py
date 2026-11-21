@@ -109,7 +109,7 @@ class GroqQuestionProvider:
                 json={
                     "model": self._model,
                     "temperature": 0.4,
-                    "max_completion_tokens": 8192,
+                    "max_completion_tokens": 32768,
                     "response_format": _groq_response_format(),
                     "messages": [
                         {
