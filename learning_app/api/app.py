@@ -25,8 +25,8 @@ def create_app(
     learning_service = LearningService(repo, provider)
 
     app = FastAPI(
-        title="Python Interview Lab — Trening Rekrutacyjny",
-        description="Polsko języczna platforma przygotowująca programistów do rozmów technicznych na poziomie Senior Python Developer.",
+        title="interview_helper — Przygotowanie do rozmów technicznych",
+        description="Polskojęzyczna platforma przygotowująca programistów do rozmów technicznych.",
         version="2.0.0",
     )
 

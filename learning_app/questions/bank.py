@@ -35,7 +35,7 @@ def _make_q(
 
 
 def build_question_bank() -> list[Question]:
-    """Zwraca bogatą, edukacyjną pulę pytań rekrutacyjnych dla Senior Python Developera."""
+    """Zwraca bogatą, edukacyjną pulę pytań do rozmów technicznych."""
     return [
         # =====================================================================
         # 1. PYTHON — TEORIA
@@ -293,7 +293,7 @@ def build_question_bank() -> list[Question]:
                 "Metoda `save()` nie ma dostępu do bazy danych, dlatego wszelkie relacje muszą być zapisywane wyłącznie za pomocą sygnałów.",
                 "Sygnały są jedynym sposobem na walidację typów danych w formularzach Django Admin.",
             ],
-            explanation="Sygnały w Django realizują wzorzec Publish-Subscribe, który odsprzęga nadawcę od odbiorcy, ale tworzy ukryty, trudny w nawigacji i debugowaniu przepływ sterowania. W warstwach domenowych Senior Developerzy preferują jawną logikę w metodzie `save()` modelu lub dedykowanych serwisach biznesowych. Istotnym ograniczeniem sygnałów jest również to, że metody masowe ORM (np. `bulk_create` czy `update`) całkowicie je pomijają ze względów wydajnościowych. Z tego względu sygnały są rekomendowane głównie do integracji z zewnętrznymi, nienależącymi do nas aplikacjami Django.",
+            explanation="Sygnały w Django realizują wzorzec Publish-Subscribe, który odsprzęga nadawcę od odbiorcy, ale tworzy ukryty, trudny w nawigacji i debugowaniu przepływ sterowania. W warstwach domenowych warto preferować jawną logikę w metodzie `save()` modelu lub dedykowanych serwisach biznesowych. Istotnym ograniczeniem sygnałów jest również to, że metody masowe ORM (np. `bulk_create` czy `update`) całkowicie je pomijają ze względów wydajnościowych. Z tego względu sygnały są rekomendowane głównie do integracji z zewnętrznymi, nienależącymi do nas aplikacjami Django.",
         ),
 
         # =====================================================================
@@ -361,7 +361,7 @@ def build_question_bank() -> list[Question]:
                 "Uniemożliwiają stosowanie transakcji bazodanowych i wyłączają gwarancje spójności ACID dla tabeli.",
                 "Automatycznie usuwają powtarzające się rekordy z bazy i modyfikują klucze obce.",
             ],
-            explanation="Indeksy B-Tree organizują klucze w zrównoważone drzewa poszukiwań, co pozwala silnikowi relacyjnemu odnaleźć konkretne rekordy w kilku operacjach I/O zamiast kosztownego pełnego skanowania tabeli (Seq Scan). Jednakże każda operacja modyfikująca dane tabeli wymusza synchroniczną aktualizację wszystkich powiązanych struktur indeksowych i potencjalne dzielenie stron (page splits) na dysku. W systemach transakcyjnych OLTP o wysokim natężeniu zapisu nadmierna liczba indeksów drastycznie obniża przepustowość bazy. Dlatego Senior Developer tworzy indeksy precyzyjnie pod rzeczywiste wzorce zapytań (często wielokolumnowe lub częściowe).",
+            explanation="Indeksy B-Tree organizują klucze w zrównoważone drzewa poszukiwań, co pozwala silnikowi relacyjnemu odnaleźć konkretne rekordy w kilku operacjach I/O zamiast kosztownego pełnego skanowania tabeli (Seq Scan). Jednakże każda operacja modyfikująca dane tabeli wymusza synchroniczną aktualizację wszystkich powiązanych struktur indeksowych i potencjalne dzielenie stron (page splits) na dysku. W systemach transakcyjnych OLTP o wysokim natężeniu zapisu nadmierna liczba indeksów drastycznie obniża przepustowość bazy. Dlatego indeksy należy tworzyć precyzyjnie pod rzeczywiste wzorce zapytań (często wielokolumnowe lub częściowe).",
         ),
         _make_q(
             id="sql-transaction",
@@ -587,7 +587,7 @@ def build_question_bank() -> list[Question]:
                 "Docker buforuje wyłącznie ostatnią instrukcję `CMD`, a wszystkie wcześniejsze kroki są zawsze budowane od zera.",
                 "Kolejność instrukcji nie ma znaczenia, ponieważ silnik budowania samoczynnie grupuje i sortuje polecenia `RUN`.",
             ],
-            explanation="Silnik budowania obrazów Dockera analizuje instrukcje sekwencyjnie i sprawdza sumy kontrolne plików używanych w danym kroku. Gdy dana warstwa ulegnie modyfikacji, pamięć podręczna (cache) dla tej instrukcji oraz wszystkich kolejnych zostaje automatycznie unieważniona. Dobrą praktyką seniora jest umieszczanie na początku instrukcji rzadko zmiennych (np. kopiowanie `requirements.txt` i `pip install`), a dopiero na samym końcu kodu źródłowego (`COPY . .`). Taki podział sprawia, że codzienne modyfikacje kodu w Pythonie nie wymagają czasochłonnego ponownego pobierania pakietów z sieci.",
+            explanation="Silnik budowania obrazów Dockera analizuje instrukcje sekwencyjnie i sprawdza sumy kontrolne plików używanych w danym kroku. Gdy dana warstwa ulegnie modyfikacji, pamięć podręczna (cache) dla tej instrukcji oraz wszystkich kolejnych zostaje automatycznie unieważniona. Dobrą praktyką jest umieszczanie na początku instrukcji rzadko zmiennych (np. kopiowanie `requirements.txt` i `pip install`), a dopiero na samym końcu kodu źródłowego (`COPY . .`). Taki podział sprawia, że codzienne modyfikacje kodu w Pythonie nie wymagają czasochłonnego ponownego pobierania pakietów z sieci.",
         ),
 
         # =====================================================================
@@ -655,7 +655,7 @@ def build_question_bank() -> list[Question]:
                 "Niemodyfikowalna krotka (`tuple`) kopiowana na nowo przy każdym zapisie `put`.",
                 "Kolejka FIFO bez aktualizowania pozycji elementu po udanym odczycie `get`.",
             ],
-            explanation="Implementacja pamięci podręcznej LRU wymaga natychmiastowego dostępu do elementów oraz możliwości szybkiej reorganizacji kolejności ich użycia. Słownik (tablica haszująca) zapewnia odczyt i zapis w średnim czasie O(1), a lista dwukierunkowa pozwala w czasie O(1) przenieść odczytany element na początek lub usunąć najstarszy wpis z końca. W bibliotece standardowej Pythona idealną strukturą łączącą obie te cechy jest `collections.OrderedDict`. W codziennej pracy Senior Developer najczęściej stosuje gotowy dekorator `@functools.lru_cache`.",
+            explanation="Implementacja pamięci podręcznej LRU wymaga natychmiastowego dostępu do elementów oraz możliwości szybkiej reorganizacji kolejności ich użycia. Słownik (tablica haszująca) zapewnia odczyt i zapis w średnim czasie O(1), a lista dwukierunkowa pozwala w czasie O(1) przenieść odczytany element na początek lub usunąć najstarszy wpis z końca. W bibliotece standardowej Pythona idealną strukturą łączącą obie te cechy jest `collections.OrderedDict`. W codziennej pracy często stosuje się gotowy dekorator `@functools.lru_cache`.",
         ),
         _make_q(
             id="practice-async-gather",
@@ -805,7 +805,7 @@ def build_question_bank() -> list[Question]:
                 "Zwiększyć liczbę dozwolonych połączeń w puli bazy danych bez analizy zapytania.",
                 "Zastąpić filtrowanie WHERE pętlą wykonującą filtrowanie po stronie kodu Pythona.",
             ],
-            explanation="Polecenie `EXPLAIN ANALYZE` uruchamia zapytanie i zwraca rzeczywisty plan wykonania przygotowany przez planer bazy danych. Pokazuje ono czasy trwania poszczególnych węzłów, użyte indeksy, algorytmy złączeń (np. Hash Join czy Nested Loop) oraz to, czy doszło do kosztownego pełnego skanowania tabeli (Sequential Scan). Dopiero na podstawie tych danych Senior Developer podejmuje decyzję o dodaniu precyzyjnego indeksu, zmianie kolejności złączeń lub refaktoryzacji zapytania. Dodawanie indeksów 'na ślepo' jest kardynalnym błędem obniżającym wydajność operacji zapisu.",
+            explanation="Polecenie `EXPLAIN ANALYZE` uruchamia zapytanie i zwraca rzeczywisty plan wykonania przygotowany przez planer bazy danych. Pokazuje ono czasy trwania poszczególnych węzłów, użyte indeksy, algorytmy złączeń (np. Hash Join czy Nested Loop) oraz to, czy doszło do kosztownego pełnego skanowania tabeli (Sequential Scan). Dopiero na podstawie tych danych można podjąć decyzję o dodaniu precyzyjnego indeksu, zmianie kolejności złączeń lub refaktoryzacji zapytania. Dodawanie indeksów 'na ślepo' jest kardynalnym błędem obniżającym wydajność operacji zapisu.",
         ),
         _make_q(
             id="practice-idempotency",

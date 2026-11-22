@@ -32,7 +32,7 @@ def _groq_question_schema() -> dict[str, object]:
             "description": (
                 "Wyczerpujące wyjaśnienie składające się z minimum 3–5 pełnych zdań po polsku: "
                 "zasada działania pod maską, dlaczego dana opcja jest poprawna, błędy w dystraktorach "
-                "oraz wskazówki architektoniczne dla seniora."
+                "oraz praktyczne wskazówki architektoniczne."
             ),
         },
     }
@@ -86,7 +86,7 @@ class GroqQuestionProvider:
     async def create_daily_set(self, day: date) -> DailySet:
         prompt = (
             f"Przygotuj po polsku zestaw pytań na dzień {day.isoformat()} dla "
-            "senior Python developera. Wybierz pytania rekrutacyjne z: "
+            "przygotowanie do rozmów technicznych. Wybierz pytania rekrutacyjne z: "
             "Pythona, FastAPI, Django, Flask, SQL, REST, AI/RAG, CI/CD, Dockera "
             "i Kubernetes. Zestaw musi liczyć dokładnie 20 pytań jednokrotnego wyboru: "
             "dokładnie 16 pytań w 'theory_questions' i dokładnie 4 pytania w 'practice_questions'. "
@@ -97,7 +97,7 @@ class GroqQuestionProvider:
             "Pole 'explanation' (wyjaśnienie) musi być wyczerpujące i zawierać kilka pełnych zdań "
             "(minimum 3–5 zdań): szczegółowo wyjaśnij, dlaczego poprawna odpowiedź jest właściwa, "
             "jak ten mechanizm działa pod maską w Pythonie lub danym systemie, dlaczego pozostałe "
-            "opcje są błędne oraz jaka jest rekomendacja architektoniczna dla Senior Developera. "
+            "opcje są błędne oraz jaka jest praktyczna rekomendacja architektoniczna. "
             "Zabrania się lakonicznych i 1-zdaniowych wyjaśnień — każde wyjaśnienie musi być "
             "pełnowymiarową analizą techniczną złożoną z co najmniej 3 pełnych zdań."
         )

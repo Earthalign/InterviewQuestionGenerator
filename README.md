@@ -1,6 +1,6 @@
-# 🧠 Interview Question Generator
+# 🧠 interview_helper
 
-**Python Interview Lab** — polskojęzyczna platforma do nauki i przygotowania do rozmów kwalifikacyjnych na poziomie **Senior Python Developer**.
+**Python Interview Lab** — polskojęzyczna platforma do nauki i przygotowania do rozmów technicznych.
 
 > Deployed on [Render.com](https://interview-question-generator.onrender.com) · Built with FastAPI + SQLite + Groq AI
 
@@ -16,7 +16,7 @@ Każdego dnia generuje zestaw **20 pytań rekrutacyjnych** (16 teorii + 4 prakty
 - 🤖 AI / RAG (embeddingi, wektorowe bazy danych)
 - 🐳 Docker, Kubernetes, CI/CD
 
-Pytania i dystraktory są **edukacyjne** — czytanie każdej opcji uczy czegoś nowego. Wyjaśnienia mają minimum 3–5 zdań z analizą techniczną na poziomie seniora.
+Pytania i dystraktory są **edukacyjne** — czytanie każdej opcji uczy czegoś nowego. Wyjaśnienia mają minimum 3–5 zdań z praktyczną analizą techniczną.
 
 ---
 
@@ -59,8 +59,8 @@ interview_helper/
 ## Uruchomienie lokalne
 
 ```bash
-git clone https://github.com/Earthalign/InterviewQuestionGenerator
-cd InterviewQuestionGenerator
+git clone https://github.com/Earthalign/interview_helper
+cd interview_helper
 
 pip install -r requirements.txt
 uvicorn main:app --reload
